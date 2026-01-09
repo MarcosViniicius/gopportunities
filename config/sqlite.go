@@ -4,8 +4,8 @@ import (
 	"os"
 
 	"github.com/MarcosViniicius/gopportunities/schemas"
-	"gorm.io/gorm"
 	"gorm.io/driver/sqlite"
+	"gorm.io/gorm"
 )
 
 func InitializeSQLite() (*gorm.DB, error){
