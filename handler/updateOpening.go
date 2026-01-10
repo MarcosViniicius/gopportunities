@@ -9,16 +9,18 @@ import (
 
 // @BasePath /api/v1
 
-// @Summary Create opening
-// @Description Create a new job opening
+// @Summary Update opening
+// @Description Update a job opening
 // @Tags Openings
 // @Accept json
 // @Produce json
-// @Param request body CreateOpeningRequest true "Request body"
-// @Success 200 {object} CreateOpeningResponse
+// @Param id query string true "Opening Identification"
+// @Param opening body UpdateOpeningRequest true "Opening data to Update"
+// @Success 200 {object} UpdateOpeningResponse
 // @Failure 400 {object} ErrorResponse
+// @Failure 404 {object} ErrorResponse
 // @Failure 500 {object} ErrorResponse
-// @Router /opening [post]
+// @Router /opening [put]
 
 func UpdateOpeningHandler(ctx *gin.Context) {
 	request := UpdateOpeningRequest{}
