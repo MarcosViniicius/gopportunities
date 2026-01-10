@@ -8,13 +8,13 @@ import (
 	"gorm.io/gorm"
 )
 
-func InitializeSQLite() (*gorm.DB, error){
+func InitializeSQLite() (*gorm.DB, error) {
 	logger := GetLogger("sqlite")
 	dbPath := "./db/main.db"
 
 	// Check if the database file exists
-	_, err := os.Stat(dbPath) 
-	if os.IsNotExist(err){
+	_, err := os.Stat(dbPath)
+	if os.IsNotExist(err) {
 		logger.Info("database file not found, creating...")
 		err = os.MkdirAll("./db", os.ModePerm)
 		if err != nil {
@@ -35,10 +35,10 @@ func InitializeSQLite() (*gorm.DB, error){
 	}
 	// Migrate the schema
 	err = db.AutoMigrate(&schemas.Opening{})
-	if err != nil{
+	if err != nil {
 		logger.Errorf("sqlite automigration error: %v", err)
 		return nil, err
 	}
 	// Return the DB
 	return db, err
-} 
+}

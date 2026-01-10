@@ -7,7 +7,20 @@ import (
 	"github.com/gin-gonic/gin"
 )
 
-func UpdateOpeningHandler(ctx *gin.Context){
+// @BasePath /api/v1
+
+// @Summary Create opening
+// @Description Create a new job opening
+// @Tags Openings
+// @Accept json
+// @Produce json
+// @Param request body CreateOpeningRequest true "Request body"
+// @Success 200 {object} CreateOpeningResponse
+// @Failure 400 {object} ErrorResponse
+// @Failure 500 {object} ErrorResponse
+// @Router /opening [post]
+
+func UpdateOpeningHandler(ctx *gin.Context) {
 	request := UpdateOpeningRequest{}
 
 	ctx.BindJSON(&request)
@@ -19,8 +32,8 @@ func UpdateOpeningHandler(ctx *gin.Context){
 	}
 
 	id := ctx.Query("id")
-	if id == ""{
-		sendError(ctx,http.StatusBadRequest, errParamIsRequired("id", "queryParameter").Error())
+	if id == "" {
+		sendError(ctx, http.StatusBadRequest, errParamIsRequired("id", "queryParameter").Error())
 		return
 	}
 
@@ -31,19 +44,19 @@ func UpdateOpeningHandler(ctx *gin.Context){
 		return
 	}
 
-	if request.Role != ""{
+	if request.Role != "" {
 		opening.Role = request.Role
 	}
-	if request.Company != ""{
+	if request.Company != "" {
 		opening.Company = request.Company
 	}
-	if request.Location != ""{
+	if request.Location != "" {
 		opening.Location = request.Location
 	}
-	if request.Link != ""{
+	if request.Link != "" {
 		opening.Link = request.Link
 	}
-	if request.Remote != nil{
+	if request.Remote != nil {
 		opening.Remote = request.Remote
 	}
 	if request.Salary > 0 {
@@ -52,7 +65,7 @@ func UpdateOpeningHandler(ctx *gin.Context){
 
 	// Save opening
 
-	if err := db.Save(&opening).Error;  err != nil {
+	if err := db.Save(&opening).Error; err != nil {
 		logger.Errorf("Error updating opening: %v", err.Error())
 		sendError(ctx, http.StatusInternalServerError, "error updating opening on database")
 		return

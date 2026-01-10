@@ -10,17 +10,17 @@ import (
 
 func initializeRoutes(router *gin.Engine) {
 
-	// Initialize handler
 	handler.InitializeHandler()
-	BasePath:= "/api/v1"
-	docs.SwaggerInfo.BasePath = BasePath
-	v1:= router.Group(BasePath)
+	basePath := "/api/v1"
+	docs.SwaggerInfo.BasePath = basePath
+
+	v1 := router.Group(basePath)
 	{
 		v1.GET("/opening", handler.ShowOpeningHandler)
 		v1.POST("/opening", handler.CreateOpeningHandler)
-		v1.DELETE("/opening", handler.DeleteOpeningHandler,)
+		v1.DELETE("/opening", handler.DeleteOpeningHandler)
 		v1.PUT("/opening", handler.UpdateOpeningHandler)
-		v1.GET("/openings",handler.ListOpeningsHandler)
+		v1.GET("/openings", handler.ListOpeningsHandler)
 	}
 
 	// Initialize Swagger
