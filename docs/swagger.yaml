@@ -1,3 +1,4 @@
+basePath: /api/v1
 definitions:
   handler.CreateOpeningRequest:
     properties:
@@ -79,7 +80,7 @@ definitions:
         type: string
       createdAt:
         type: string
-      deteledAt:
+      deletedAt:
         type: string
       id:
         type: integer
@@ -96,8 +97,12 @@ definitions:
       updatedAt:
         type: string
     type: object
+host: localhost:8080
 info:
   contact: {}
+  description: API para gerenciar oportunidades de emprego
+  title: Gopportunities API
+  version: "1.0"
 paths:
   /opening:
     delete:
@@ -242,4 +247,6 @@ paths:
       summary: List openings
       tags:
       - Openings
+schemes:
+- http
 swagger: "2.0"

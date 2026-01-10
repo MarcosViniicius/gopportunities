@@ -1,8 +1,16 @@
 {
+    "schemes": [
+        "http"
+    ],
     "swagger": "2.0",
     "info": {
-        "contact": {}
+        "description": "API para gerenciar oportunidades de emprego",
+        "title": "Gopportunities API",
+        "contact": {},
+        "version": "1.0"
     },
+    "host": "localhost:8080",
+    "basePath": "/api/v1",
     "paths": {
         "/opening": {
             "get": {
@@ -346,7 +354,7 @@
                 "createdAt": {
                     "type": "string"
                 },
-                "deteledAt": {
+                "deletedAt": {
                     "type": "string"
                 },
                 "id": {

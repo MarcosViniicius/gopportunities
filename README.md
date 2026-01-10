@@ -2,7 +2,7 @@
 
 <div align="center">
 
-![Gopportunities](https://dev.to/deadlock/golang-how-i-learned-go-53if)
+![Gopportunities](assets\golang.png)
 
 ![Go](https://img.shields.io/badge/Go-1.25.5-00ADD8?style=flat-square&logo=go)
 ![Gin](https://img.shields.io/badge/Gin-1.11.0-00ADD8?style=flat-square)
